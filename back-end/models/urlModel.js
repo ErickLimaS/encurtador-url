@@ -5,7 +5,7 @@ const urlSchema = new mongoose.Schema({
   shortenedUrl: { type: String, required: true },
   creator: {
     firstName: { type: String, default: null },
-    id: { type: String, default: null },
+    _id: { type: String, default: null },
   },
   createdAt: { type: Date, default: Date.now, required: true, immutable: true },
 });

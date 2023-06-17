@@ -1,7 +1,8 @@
 const express = require("express");
 const expressAsyncHandler = require("express-async-handler");
 const UrlShortened = require("../models/urlModel.js");
-const { generateUniqueId, response } = require("../utils.js");
+const User = require("../models/userModel.js");
+const { generateUniqueId, response, isAuth } = require("../utils.js");
 
 const shortenerUrlRoute = express.Router();
 
@@ -22,11 +23,10 @@ shortenerUrlRoute.get("/:id",expressAsyncHandler(async (req, res) => {
     catch{
       return res.status(500).json(response(false, err.message));
     }
-})
-);
+}));
 
 // creates a shortened url 
-shortenerUrlRoute.post("/create-short-url",expressAsyncHandler(async (req, res) => {
+shortenerUrlRoute.post("/create-short-url", isAuth, expressAsyncHandler(async (req, res) => {
     try {
       // if found the same url shortened previously, returns the same hash, else returns a new one
       const wasUrlShortenedBefore = await UrlShortened.findOne({originalUrl: req.body.originalUrl});
@@ -39,6 +39,17 @@ shortenerUrlRoute.post("/create-short-url",expressAsyncHandler(async (req, res) 
 
       const createdNewUrl = new UrlShortened(req.body);
 
+      // stores on user history, if it's declared on request body
+      if(req.body.creator){
+
+        const user = await User.findById(req.body.creator._id)
+
+        user.activities.push(createdNewUrl);
+
+        await user.save()
+
+      }
+
       await createdNewUrl.save();
 
       return res.status(201).json(response(true, "Nova URL Criada com Sucesso!", createdNewUrl));
@@ -48,5 +59,25 @@ shortenerUrlRoute.post("/create-short-url",expressAsyncHandler(async (req, res) 
     }
   })
 );
+
+// deletes chosen item
+shortenerUrlRoute.delete("/delete-short-url", isAuth, expressAsyncHandler(async (req, res) => {
+    try{
+        const user = await User.findById(req.body.creator._id).populate("activities");
+
+        if(user.activities.find((item) => item._id == req.body._id)){
+            await UrlShortened.findByIdAndDelete(req.body._id);
+
+            return res.status(202).json(response(true, "Removido Com Sucesso!"));
+        }
+        else{
+            return res.status(404).json(response(false, "Item Não Encontrado."));
+        }
+
+    }
+    catch(err){
+      return res.status(500).json(response(false, err.message));
+    }
+}));
 
 module.exports = shortenerUrlRoute;
