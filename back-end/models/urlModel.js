@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const urlSchema = new mongoose.Schema({
   originalUrl: { type: String, required: true },
   shortenedUrl: { type: String, required: true },
+  visitors: { type: Number, default: 0 },
   creator: {
     firstName: { type: String, default: null },
     _id: { type: String, default: null },

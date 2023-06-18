@@ -13,9 +13,13 @@ shortenerUrlRoute.get("/:id",expressAsyncHandler(async (req, res) => {
 
         if (!isIdAvailable) {
 
-            return res.status(404).json(response(false, "Não Encontrado ou Atualmente Não Disponível."))
+          return res.status(404).json(response(false, "Não Encontrado ou Atualmente Não Disponível."))
 
         }
+
+        isIdAvailable.visitors++;
+
+        await isIdAvailable.save();
 
         return res.status(200).json(response(true, "Redirecionando...", isIdAvailable.originalUrl))
 
