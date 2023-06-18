@@ -1,0 +1,25 @@
+#container {
+
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#message {
+
+    margin-top: 5vh;
+
+    height: 100%;
+
+}
+
+#message> *{
+
+    max-width: max-content;
+    margin: auto;
+
+}
+
+.primary_color{
+    color: var(--primary-color);
+}
