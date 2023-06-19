@@ -1,0 +1,278 @@
+#container {
+
+    max-width: var(--max-width);
+
+    margin: auto;
+
+    padding: 16px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#container a,
+#container svg {
+
+    display: block;
+
+}
+
+#nav_list_container {
+
+    gap: 40px;
+
+}
+
+#nav_list_container li a {
+
+    font-size: var(--fs-small-1);
+
+    font-weight: 500;
+
+    color: var(--primary-color);
+
+    border-bottom: 2px solid transparent;
+
+}
+
+#nav_list_container li a:hover {
+
+    transition: all ease 400ms;
+
+    border-bottom: 2px solid var(--primary-color);
+
+}
+
+#user_panel_container {
+    position: relative;
+    top: 0;
+}
+
+#user_panel_container #menu_panel_btn {
+
+    z-index: 1;
+    position: relative;
+    top: 0;
+
+    background-color: var(--primary-color);
+
+    border: 1px solid var(--black-5);
+
+    border-radius: 2px;
+
+    padding: 4px;
+
+}
+
+@media(min-width: 769px) {
+    #user_panel_container #menu_panel_btn {
+        display: none;
+    }
+}
+
+#user_panel_container #menu_panel_btn svg {
+
+    fill: var(--white-100);
+
+}
+
+#menu_list_panel[aria-expanded=false] {
+    display: none;
+}
+
+@media(max-width: 768px) {
+    #menu_list_panel {
+        z-index: 1;
+        position: absolute;
+        top: 54px;
+        right: 0;
+
+    }
+}
+
+#user_panel_container button#user_open_panel_btn {
+
+    cursor: pointer;
+
+    position: relative;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+
+    padding: 12px 12px;
+
+    background-color: var(--primary-color);
+    color: var(--white-100);
+
+    border: 2px solid var(--black-50);
+    border-radius: 4px;
+
+    font-size: var(--fs-small-1);
+
+}
+
+#user_panel_container button#user_open_panel_btn:hover {
+
+    transition: all ease 300ms;
+
+    border: 2px solid var(--black-5);
+}
+
+#user_panel_container button#user_open_panel_btn svg {
+
+    margin-right: 8px;
+
+    transform: scale(1.4);
+
+}
+
+#user_panel_container #user_panel[aria-expanded=false] {
+    display: none;
+}
+
+@media(max-width: 768px) {
+    #user_panel_container #user_panel {
+
+        z-index: 1;
+
+        position: absolute;
+        background-color: #f7fffd;
+        top: -12px;
+        right: -16px;
+
+        min-width: 100vw;
+
+        border-top: 1px solid var(--primary-color);
+        border-bottom: 1px solid var(--primary-color);
+    }
+}
+
+@media(min-width: 769px) {
+    #user_panel_container #user_panel {
+
+        padding: 8px;
+
+        position: absolute;
+        background-color: var(--black-5);
+        top: 54px;
+        left: -2px;
+
+        border: 1px solid var(--primary-color);
+        border-radius: 2px;
+    }
+}
+
+#user_panel_container #user_panel li {
+
+    color: var(--primary-color);
+
+    background-color: var(--black-5);
+
+    border-radius: 2px;
+}
+
+#user_panel_container #user_panel li>* {
+
+    cursor: pointer;
+
+    padding: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    font-size: var(--fs-small-1);
+
+    font-weight: 500;
+
+    border: 2px solid var(--white-100);
+
+    border-radius: 2px;
+}
+
+#user_panel_container #user_panel li>*:hover {
+
+    transition: all ease-in-out 200ms;
+
+    background-color: var(--black-10);
+
+}
+
+@media(min-width: 769px) {
+    #user_panel_container #user_panel li>* {
+        padding: 8px 24px;
+    }
+}
+
+#user_panel_container #user_panel li button {
+
+    width: 100%;
+
+    background-color: var(--primary-color);
+
+    border-radius: 2px;
+
+    color: var(--white-100);
+
+}
+
+#user_panel_container #user_panel li svg {
+
+    margin-right: 8px;
+
+    transform: scale(1.2);
+
+}
+
+#user_panel_container h5.mobile_only {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 8px;
+    margin-bottom: 16px;
+
+    font-size: var(--fs-small-1);
+    font-weight: 500;
+
+    color: var(--primary-color);
+
+}
+
+#user_panel_container h5.mobile_only svg {
+
+    transform: scale(1.2);
+
+    margin-right: 8px;
+
+    color: var(--primary-color);
+
+}
+
+@media(min-width: 769px) {
+    .mobile_only {
+
+        display: none !important;
+
+    }
+}
+
+@media(max-width: 768px) {
+    .desktop_only {
+
+        display: none !important;
+
+    }
+}
+
+.row {
+
+    display: flex;
+    flex-direction: row;
+
+}

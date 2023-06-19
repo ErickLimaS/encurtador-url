@@ -10,6 +10,9 @@
   --black-100: #030f10;
   --black-75: #030e0fbf;
   --black-50: #030e0f80;
+  --black-25: #03101140;
+  --black-10: #0310111a;
+  --black-5: #0310110d;
 
   --white-100: #f4fbf9;
   --white-75: #f4fbf9bf;
@@ -55,6 +58,10 @@ a {
   color: var(--black-100);
 }
 
+li {
+  list-style-type: none;
+}
+
 h1 {
   font-size: var(--fs-h1);
 }
@@ -77,7 +84,8 @@ h5 {
 
 p,
 li,
-a {
+a,
+button {
   font-size: var(--fs-p);
 }
 
@@ -99,6 +107,10 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+main {
+  min-height: 100vh;
 }
 
 a {
