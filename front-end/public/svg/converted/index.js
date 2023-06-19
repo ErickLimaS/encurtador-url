@@ -1,6 +1,9 @@
 export { default as BoxArrowInRight } from "./BoxArrowInRight";
 export { default as BoxArrowLeft } from "./BoxArrowLeft";
+export { default as Clipboard2 } from "./Clipboard2";
 export { default as ClockHistory } from "./ClockHistory";
+export { default as HandIndexThumbFill } from "./HandIndexThumbFill";
 export { default as List } from "./List";
+export { default as Loading } from "./Loading";
 export { default as PersonFill } from "./PersonFill";
 export { default as XCircle } from "./XCircle";

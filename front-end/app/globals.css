@@ -89,7 +89,7 @@ button {
   font-size: var(--fs-p);
 }
 
-small {
+small, label {
   font-size: var(--fs-small-1);
 }
 

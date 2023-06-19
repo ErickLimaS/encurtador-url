@@ -4,7 +4,7 @@ import styles from './page.module.css'
 
 async function getData(shortUrlId: string) {
 
-    const res = await fetch(`${process.env.SERVER_URL}${shortUrlId}`)
+    const res = await fetch(`${process.env.SERVER_URL}/${shortUrlId}`)
         .then((result) => { return result.json() })
 
     if (!res.success) {
@@ -17,12 +17,12 @@ async function getData(shortUrlId: string) {
 
 export default async function Page({ params }: { params: { id: string } }) {
 
-    const [data, setData] = useState<ServerResponse>()
+    const [data, setData] = useState<ServerWithStringResponse>()
 
     // gets ID from url, then makes a request to server, receiving the original url
     useEffect(() => {
         async function load() {
-            const res: ServerResponse = await getData(params.id)
+            const res: ServerWithStringResponse = await getData(params.id)
 
             setData(res)
         }
