@@ -6,6 +6,41 @@ const { generateUniqueId, response, isAuth } = require("../utils.js");
 
 const shortenerUrlRoute = express.Router();
 
+// returns all documents by sorted by url params {limit, sortBy}
+shortenerUrlRoute.get("/all",expressAsyncHandler(async (req, res) => {
+    try{
+
+        let sortBy = req.query.sortBy
+
+        switch (sortBy) {
+          case "ASC":
+
+            sortBy = 1;
+            
+            break
+          case "DESC":
+
+            sortBy = -1;
+
+            break
+          default:
+            
+            sortBy = null;
+
+            break
+        }
+        
+        const documentsRequested = await UrlShortened.find()
+          .sort({ visitors: sortBy }).limit(req.query.limit ? req.query.limit : null);
+
+        return res.status(200).json(response(true, "Todas URLs Encontradas.", documentsRequested));
+
+    }
+    catch{
+      return res.status(500).json(response(false, err.message));
+    }
+}));
+
 // returns original url
 shortenerUrlRoute.get("/:id",expressAsyncHandler(async (req, res) => {
     try{
