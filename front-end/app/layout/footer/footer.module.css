@@ -1,0 +1,65 @@
+#container {
+
+    padding: 16px;
+
+    background-color: var(--primary-color);
+
+}
+
+#links_container {
+
+    margin: auto;
+
+    max-width: 1120px;
+
+}
+
+#links_container h6 {
+
+    margin-bottom: 16px;
+
+    font-size: var(--fs-small-1);
+
+    font-weight: 500;
+
+    color: var(--white-75);
+
+}
+
+#links_container ul {
+
+    display: grid;
+    gap: 8px;
+
+}
+
+#links_container li * {
+
+    font-size: var(--fs-small-1);
+
+    font-weight: 500;
+
+    color: var(--white-100);
+
+}
+
+#links_container li *:hover {
+
+    transition: all ease-in-out 100ms;
+
+    color: var(--white-75);
+
+}
+
+#container small {
+
+    margin-top: 32px;
+
+    font-size: var(--fs-small-2);
+
+    color: var(--white-75);
+
+    display: block;
+    text-align: center;
+
+}

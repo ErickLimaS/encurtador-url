@@ -78,7 +78,7 @@ h4 {
   font-size: var(--fs-h4);
 }
 
-h5 {
+h5, h6 {
   font-size: var(--fs-h5);
 }
 
@@ -110,7 +110,7 @@ body {
 }
 
 main {
-  min-height: 100vh;
+  min-height: 50vh;
 }
 
 a {
