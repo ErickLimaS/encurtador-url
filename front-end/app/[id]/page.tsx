@@ -1,19 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
-
-async function getData(shortUrlId: string) {
-
-    const res = await fetch(`${process.env.SERVER_URL}/${shortUrlId}`)
-        .then((result) => { return result.json() })
-
-    if (!res.success) {
-        throw new Error('Failed to fetch data')
-    }
-
-    return res
-
-}
+import { getData } from '@/api/fetchConfig'
 
 export default async function Page({ params }: { params: { id: string } }) {
 
@@ -22,9 +10,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     // gets ID from url, then makes a request to server, receiving the original url
     useEffect(() => {
         async function load() {
-            const res: ServerWithStringResponse = await getData(params.id)
+            const res = await getData(`${process.env.SERVER_URL}/${params.id}`, true)
 
-            setData(res)
+            setData(res as ServerWithStringResponse)
         }
         load()
     }, [])

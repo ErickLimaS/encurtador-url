@@ -64,21 +64,26 @@ li {
 
 h1 {
   font-size: var(--fs-h1);
+  font-weight: 500;
 }
 
 h2 {
   font-size: var(--fs-h2);
+  font-weight: 500;
 }
 
 h3 {
   font-size: var(--fs-h3);
+  font-weight: 500;
 }
 
 h4 {
   font-size: var(--fs-h4);
+  font-weight: 500;
 }
 
-h5, h6 {
+h5,
+h6 {
   font-size: var(--fs-h5);
 }
 
@@ -89,7 +94,12 @@ button {
   font-size: var(--fs-p);
 }
 
-small, label {
+button {
+  cursor: pointer;
+}
+
+small,
+label {
   font-size: var(--fs-small-1);
 }
 

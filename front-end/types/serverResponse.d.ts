@@ -5,22 +5,27 @@ interface ServerResponse {
 
 }
 
-interface ServerWithStringResponse extends ServerResponse {
+interface UrlObjectFromServer {
 
-    response: string;
+    originalUrl: string;
+    shortenedUrl: string;
+    visitors: number;
+    creator: {
+        firstName: string | null,
+        _id: string | null
+    };
+    createdAt: date;
 
 }
 
 interface ServerWithJsonResponse extends ServerResponse {
 
-    response: {
-        originalUrl: string;
-        shortenedUrl: string;
-        visitors: number;
-        creator: {
-            firstName: string | null,
-            _id: string | null
-        };
-    };
+    response: UrlObjectFromServer;
+
+}
+
+interface ServerWithStringResponse extends ServerResponse {
+
+    response: string;
 
 }
