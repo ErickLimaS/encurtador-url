@@ -15,6 +15,7 @@ interface UrlObjectFromServer {
         _id: string | null
     };
     createdAt: date;
+    _id: string;
 
 }
 

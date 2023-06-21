@@ -82,7 +82,7 @@ export default function Header() {
                             {user.token ? (
                                 <ul role='menu'>
                                     <li>
-                                        <Link href={'/user/activities'} role='menuitem'><SVG.ClockHistory />Histórico</Link>
+                                        <Link href={'/p/activities'} role='menuitem'><SVG.ClockHistory />Histórico</Link>
                                     </li>
                                     <li>
                                         <button role='menuitem' onClick={() => logOut()}><SVG.BoxArrowLeft />Sair</button>

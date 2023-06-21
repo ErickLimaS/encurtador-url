@@ -3,8 +3,11 @@ import axios from 'axios'
 import styles from './page.module.css'
 import { FormEvent, useRef, useState } from 'react'
 import * as SVG from '@/public/svg/converted'
+import store from '@/store'
 
 export default function Home() {
+
+  const [user] = useState(store.getState().user)
 
   const urlInput = useRef<null | HTMLInputElement>(null)
 
@@ -25,7 +28,13 @@ export default function Home() {
       `${process.env.SERVER_URL}/create-short-url`,
       {
         originalUrl: form.original_url.value
-      }
+      },
+      user.token &&( {
+        headers: {
+          "Authorization": `Bearer ${(user as User).token}`
+        }
+      })
+
     )
 
     setCurrentResponseData(data)
