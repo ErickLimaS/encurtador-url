@@ -1,3 +1,9 @@
+#header_tag {
+
+    box-shadow: 0px -8px 20px 2px var(--black-25);
+
+}
+
 #container {
 
     max-width: var(--max-width);
@@ -11,6 +17,11 @@
     justify-content: space-between;
     align-items: center;
 
+}
+
+#container >a{
+    color: var(--primary-color);
+    font-weight: 500;
 }
 
 #container a,
@@ -64,7 +75,7 @@
 
     border-radius: 2px;
 
-    padding: 4px;
+    padding: 8px;
 
 }
 
@@ -77,6 +88,8 @@
 #user_panel_container #menu_panel_btn svg {
 
     fill: var(--white-100);
+
+    transform: scale(1.5);
 
 }
 
@@ -109,7 +122,7 @@
     background-color: var(--primary-color);
     color: var(--white-100);
 
-    border: 2px solid var(--black-50);
+    border: 2px solid var(--black-5);
     border-radius: 4px;
 
     font-size: var(--fs-small-1);
@@ -119,8 +132,8 @@
 #user_panel_container button#user_open_panel_btn:hover {
 
     transition: all ease 300ms;
+    border: 2px solid var(--black-50);
 
-    border: 2px solid var(--black-5);
 }
 
 #user_panel_container button#user_open_panel_btn svg {
@@ -138,29 +151,33 @@
 @media(max-width: 768px) {
     #user_panel_container #user_panel {
 
-        z-index: 1;
+        z-index: 10;
+
+        padding: 8px;
 
         position: absolute;
-        background-color: #f7fffd;
+        background-color:var(--white-100);
         top: -12px;
-        right: -16px;
+        right: 0;
 
-        min-width: 100vw;
+        min-width: calc(100vw - 32px);
 
-        border-top: 1px solid var(--primary-color);
-        border-bottom: 1px solid var(--primary-color);
+        border: 1px solid var(--primary-color);
+        border-radius: 2px;
     }
 }
 
 @media(min-width: 769px) {
     #user_panel_container #user_panel {
 
+        z-index: 10;
+
         padding: 8px;
 
         position: absolute;
-        background-color: var(--black-5);
+        background-color: var(--white-100);
         top: 54px;
-        left: -2px;
+        left: -3px;
 
         border: 1px solid var(--primary-color);
         border-radius: 2px;
