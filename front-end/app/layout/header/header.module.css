@@ -19,7 +19,7 @@
 
 }
 
-#container >a{
+#container>a {
     color: var(--primary-color);
     font-weight: 500;
 }
@@ -107,7 +107,8 @@
     }
 }
 
-#user_panel_container button#user_open_panel_btn {
+#user_panel_container button#user_open_panel_btn,
+#user_panel_container a#login_link {
 
     cursor: pointer;
 
@@ -136,7 +137,8 @@
 
 }
 
-#user_panel_container button#user_open_panel_btn svg {
+#user_panel_container button#user_open_panel_btn svg,
+#user_panel_container a#login_link svg {
 
     margin-right: 8px;
 
@@ -156,9 +158,11 @@
         padding: 8px;
 
         position: absolute;
-        background-color:var(--white-100);
+        background-color: var(--white-100);
         top: -12px;
         right: 0;
+
+        box-shadow: 3px 3px 6px 0px var(--black-50);
 
         min-width: calc(100vw - 32px);
 

@@ -1,28 +1,23 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './header.module.css'
 import Link from 'next/link'
 import * as SVG from '@/public/svg/converted'
+import store from '@/store'
+import { logOutUser } from '@/store/actions/userActions'
 
 export default function Header() {
 
-    const [isMenuExpanded, setIsMenuExpanded] = useState<boolean>(true)
+    const [user] = useState(store.getState().user as User)
+
+    const [isMenuExpanded] = useState<boolean>(true)
     const [isUserPanelExpanded, setIsUserPanelExpanded] = useState<boolean>(false)
 
-    const [userData, setUserData] = useState<User>()
+    function logOut() {
 
-    function login() {
-
-        // todo
+        store.dispatch(logOutUser())
 
     }
-
-    useEffect(() => {
-
-        // todo
-        // if user is already logged in
-
-    }, [])
 
     return (
         <header id={styles.header_tag}>
@@ -51,34 +46,57 @@ export default function Header() {
                     </button>
 
                     <div aria-expanded={isMenuExpanded} id={styles.menu_list_panel}>
-                        <button
-                            className={styles.desktop_only}
-                            id={styles.user_open_panel_btn}
-                            aria-controls={styles.user_panel}
-                            onClick={() => {
-                                setIsUserPanelExpanded(!isUserPanelExpanded)
-                            }}
-                        >
-                            {isUserPanelExpanded ? (
-                                <><SVG.XCircle alt="Cruz Indicada para Fechar Menu." />Fechar Menu</>
-                            ) : (
-                                <><SVG.PersonFill alt="Perfil de Pessoa." />Meu Perfil</>
-                            )}
 
-                        </button>
+                        {/* if USER is LOGGED IN for DESKTOP*/}
+                        {user.token ? (
+                            <button
+                                className={styles.desktop_only}
+                                id={styles.user_open_panel_btn}
+                                aria-controls={styles.user_panel}
+                                onClick={() => {
+                                    setIsUserPanelExpanded(!isUserPanelExpanded)
+                                }}
+                            >
+                                {isUserPanelExpanded ? (
+                                    <><SVG.XCircle alt="Cruz Indicada para Fechar Menu." />Fechar Menu</>
+                                ) : (
+                                    <><SVG.PersonFill alt="Perfil de Pessoa." />Meu Perfil</>
+                                )}
+                            </button>
+                        ) : (
+
+                            <Link href={"/p/login"}
+                                className={styles.desktop_only}
+                                id={styles.login_link}
+                            >
+                                <SVG.PersonFill alt="Perfil de Pessoa." />Fazer Login
+                            </Link>
+
+                        )}
 
                         <div aria-expanded={isUserPanelExpanded} id={styles.user_panel}>
 
                             <h5 className={styles.mobile_only}><SVG.PersonFill /> Usuário</h5>
 
-                            <ul role='menu'>
-                                <li>
-                                    <Link href={'/user/activities'} role='menuitem'><SVG.ClockHistory />Histórico</Link>
-                                </li>
-                                <li>
-                                    <button role='menuitem'><SVG.BoxArrowLeft />Sair</button>
-                                </li>
-                            </ul>
+                            {/* if USER is LOGGED IN for MOBILE*/}
+                            {user.token ? (
+                                <ul role='menu'>
+                                    <li>
+                                        <Link href={'/user/activities'} role='menuitem'><SVG.ClockHistory />Histórico</Link>
+                                    </li>
+                                    <li>
+                                        <button role='menuitem' onClick={() => logOut()}><SVG.BoxArrowLeft />Sair</button>
+                                    </li>
+                                </ul>
+                            ) : (
+                                <ul role='menu'>
+                                    <li>
+                                        <Link href={'/p/login'} role='menuitem'>
+                                            <SVG.BoxArrowInRight /> Fazer Login
+                                        </Link>
+                                    </li>
+                                </ul>
+                            )}
 
                             <h5 className={styles.mobile_only}>Links</h5>
 
