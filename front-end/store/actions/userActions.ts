@@ -39,3 +39,40 @@ export const signUpUser = (userData: UserSignUp) => async (dispatch: Dispatch<An
     }
 
 }
+
+export const logInUser = (userData: UserLogIn) => async (dispatch: Dispatch<AnyAction>) => {
+
+    try {
+        dispatch({ type: USER_SIGNUP_REQUEST, payload: userData })
+
+        const { data }: { data: ServerWithStringResponse } = await axios.post(
+            `${process.env.SERVER_URL}/user/signin`, userData
+        )
+
+        if (!data.success) {
+
+            dispatch({ type: USER_SIGNUP_ERROR, payload: data.message })
+
+            alert(data.message)
+
+            return
+
+        }
+
+        dispatch({ type: USER_SIGNUP_SUCCESS, payload: data.response })
+
+        localStorage.setItem("token", data.response)
+
+        return data
+    }
+    catch (err: any) {
+
+        dispatch({ type: USER_SIGNUP_ERROR, payload: err.response })
+
+        console.error(err)
+
+        alert(err)
+
+    }
+
+}
