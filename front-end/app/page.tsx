@@ -20,6 +20,10 @@ export default function Home() {
 
     e.preventDefault()
 
+    if (urlInput.current!.value == "") {
+      return
+    }
+
     setLoading(true)
 
     const form = e.target as HTMLFormElement
@@ -29,7 +33,7 @@ export default function Home() {
       {
         originalUrl: form.original_url.value
       },
-      user.token &&( {
+      user.token && ({
         headers: {
           "Authorization": `Bearer ${(user as User).token}`
         }
@@ -56,12 +60,17 @@ export default function Home() {
   return (
     <div id={styles.container}>
 
+      <div id={styles.heading_text}>
+        <h1>Encurte Seus Links</h1>
+        <p>Cole o link que deseja encurtar abaixo</p>
+      </div>
+
       <div id={styles.form_container}>
 
-        <form onSubmit={(e) => submitForm(e)}>
+        <form onSubmit={(e) => submitForm(e)} data-loading={loading}>
 
           <label>
-            URL a ser Encurtado
+            Qual URL você quer encurtar?
             <input type='url' name='original_url'
               placeholder='https://www.google.com/'
               ref={urlInput}
@@ -70,12 +79,12 @@ export default function Home() {
           </label>
 
           <button type='submit' disabled={loading}>
-            <SVG.HandIndexThumbFill /> Encurtar URL
+            <SVG.HandIndexThumbFill /> Encurtar
           </button>
 
         </form>
 
-        <div id={styles.result_container}>
+        <div id={styles.result_container} data-success={false}>
 
           {loading && (
             <span id={styles.loading}>
@@ -83,24 +92,29 @@ export default function Home() {
             </span>
           )}
 
-          {currentResponseData?.success && (
+          {(currentResponseData?.success && loading != true) && (
             <>
-              <h3>🎉 Sua URL Está Pronta! 🎉</h3>
+              <div id={styles.success_message_container}>
+                <h3>🎉 Sua URL Está Pronta! 🎉</h3>
 
-              <div id={styles.clipboard_container}>
-                <a target='_blank' href={`/${currentResponseData.response.shortenedUrl}`} id={styles.new_url}
-                  title="Copiar">
-                  https://speedio-shorter-url.netlify.app/{currentResponseData.response.shortenedUrl}
-                </a>
+                <div id={styles.clipboard_container}>
+                  <a target='_blank'
+                    href={`https://speedio-shorter-url.netlify.app/${currentResponseData.response.shortenedUrl}`}
+                    id={styles.new_url}
+                    title="Copiar">
+                    https://speedio-shorter-url.netlify.app/{currentResponseData.response.shortenedUrl}
+                  </a>
 
-                <button
-                  onClick={() => clipboardNewUrl()}>
-                  <SVG.Clipboard2
-                    title="Copiar"
-                    alt="Prancheta"
-                    aria-label="Copiar para Área de Tarefas."
-                  />
-                </button>
+                  <button
+                    onClick={() => clipboardNewUrl()}>
+                    <SVG.Clipboard2
+                      title="Copiar"
+                      alt="Prancheta"
+                      aria-label="Copiar para Área de Tarefas."
+                    />
+                    Copiar
+                  </button>
+                </div>
               </div>
             </>
           )}
