@@ -1,6 +1,6 @@
 interface User {
 
-    token: string;
+    token: string | null;
     firstName?: string;
 
 }

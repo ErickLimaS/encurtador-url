@@ -7,7 +7,7 @@ import store from '@/store'
 
 export default function Home() {
 
-  const [user] = useState(store.getState().user)
+  const [user] = useState(store.getState().user) as any //fix it later
 
   const urlInput = useRef<null | HTMLInputElement>(null)
 
