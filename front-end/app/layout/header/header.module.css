@@ -1,5 +1,7 @@
 #header_tag {
 
+    background-color: #4a2e83;
+
     box-shadow: 0px -8px 20px 2px var(--black-25);
 
 }
@@ -19,15 +21,23 @@
 
 }
 
-#container>a {
-    color: var(--primary-color);
-    font-weight: 500;
+#links_wrapper>a:first-child {
+    color: var(--white-100);
+    font-weight: 100;
 }
 
 #container a,
 #container svg {
 
     display: block;
+
+}
+
+#links_wrapper {
+
+    display: flex;
+    align-items: center;
+    gap: 0 32px;
 
 }
 
@@ -39,11 +49,11 @@
 
 #nav_list_container li a {
 
-    font-size: var(--fs-small-1);
+    font-size: var(--fs-small-2);
 
     font-weight: 500;
 
-    color: var(--primary-color);
+    color: var(--white-50);
 
     border-bottom: 2px solid transparent;
 
@@ -51,9 +61,11 @@
 
 #nav_list_container li a:hover {
 
+    color: var(--white-100);
+
     transition: all ease 400ms;
 
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--white-100);
 
 }
 
@@ -69,9 +81,9 @@
     position: relative;
     top: 0;
 
-    background-color: var(--primary-color);
+    background-color: #4a2e83;
 
-    border: 1px solid var(--black-5);
+    border: 1px solid var(--white-50);
 
     border-radius: 2px;
 
@@ -120,13 +132,24 @@
 
     padding: 12px 12px;
 
-    background-color: var(--primary-color);
+    background-color: #4a2e83;
+
     color: var(--white-100);
 
-    border: 2px solid var(--black-5);
+    border: 2px solid var(--black-25);
     border-radius: 4px;
 
-    font-size: var(--fs-small-1);
+    font-size: var(--fs-small-2);
+
+}
+
+#user_panel_container a#login_link:hover {
+
+    background-image: linear-gradient(to right, #4a2e83 0%, #8b1cbb 51%, #4a2e83 100%);
+
+    transition: all ease 500ms;
+    background-position: right center;
+    background-size: 200% auto;
 
 }
 
@@ -166,7 +189,7 @@
 
         min-width: calc(100vw - 32px);
 
-        border: 1px solid var(--primary-color);
+        border: 1px solid var(--black-50);
         border-radius: 2px;
     }
 }
@@ -190,7 +213,7 @@
 
 #user_panel_container #user_panel li {
 
-    color: var(--primary-color);
+    color: var(--black-75);
 
     background-color: var(--black-5);
 
@@ -262,7 +285,7 @@
     font-size: var(--fs-small-1);
     font-weight: 500;
 
-    color: var(--primary-color);
+    color: #4a2e83;
 
 }
 
@@ -272,7 +295,7 @@
 
     margin-right: 8px;
 
-    color: var(--primary-color);
+    color: #4a2e83;
 
 }
 

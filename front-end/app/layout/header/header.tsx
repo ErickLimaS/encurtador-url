@@ -24,14 +24,18 @@ export default function Header() {
 
             <div id={styles.container}>
 
-                <Link href={'/'}>Brand Logo</Link>
+                <div id={styles.links_wrapper}>
 
-                <nav className={styles.desktop_only}>
-                    <ul className={styles.row} id={styles.nav_list_container}>
-                        <li><Link href={'/p/top-100'}>Top 100</Link></li>
-                        <li><Link href={'/p/docs'}>Documentação</Link></li>
-                    </ul>
-                </nav>
+                    <Link href={'/'}>Brand Logo</Link>
+
+                    <nav className={styles.desktop_only}>
+                        <ul className={styles.row} id={styles.nav_list_container}>
+                            <li><Link href={'/p/top-100'}>Top 100</Link></li>
+                            <li><Link href={'/p/docs'}>Documentação</Link></li>
+                        </ul>
+                    </nav>
+
+                </div>
 
                 <div id={styles.user_panel_container}>
 
@@ -69,7 +73,7 @@ export default function Header() {
                                 className={styles.desktop_only}
                                 id={styles.login_link}
                             >
-                                <SVG.PersonFill alt="Perfil de Pessoa." />Fazer Login
+                                <SVG.PersonFill alt="Perfil de Pessoa." />Login
                             </Link>
 
                         )}
