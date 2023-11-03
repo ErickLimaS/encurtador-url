@@ -20,7 +20,7 @@ export default function Footer() {
 
             </div>
 
-            <small>@2023. Desafio Speedio</small>
+            <small>@2023. Teste.</small>
 
         </footer>
     )

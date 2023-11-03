@@ -5,7 +5,7 @@ import styles from "./page.module.css"
 
 export default async function Page() {
 
-    const data: any = await getData(`${process.env.SERVER_URL}/all?limit=100&sortBy=DESC`)
+    const data: unknown = await getData(`${process.env.SERVER_URL}/all?limit=100&sortBy=DESC`)
 
     return (
         <div id={styles.container}>
@@ -14,10 +14,9 @@ export default async function Page() {
 
             <section id={styles.results_container}>
 
-                {data.map((item: UrlObjectFromServer, key: number) => (
+                {(data as [UrlObjectFromServer]).map((item: UrlObjectFromServer, key: number) => (
                     <div key={key} className={styles.result_item}>
-                        <h2>{key + 1}</h2>
-                        <UrlCard data={item} />
+                        <UrlCard data={item} position={key + 1} />
                     </div>
                 ))}
 
